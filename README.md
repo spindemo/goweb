@@ -1,5 +1,6 @@
 goweb
 ----
+A friendly little web server that tells you where you are.
 
 Build
 =====
