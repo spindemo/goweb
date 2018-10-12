@@ -10,9 +10,9 @@ pipeline {
           containers:
           - name: docker
             image: docker:18-dind
-            command:
-            - cat
             tty: true
+            securityContext:
+              privileged: true
       """
     }
   }
