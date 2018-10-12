@@ -9,7 +9,10 @@ pipeline {
         spec:
           containers:
           - name: docker
-            image: docker:18
+            image: gcr.io/kaniko-project/executor:latest
+            args: ["--dockerfile=Dockerfile",
+                   "--context=dir://",
+                   "--destination=core-1-190918/goweb:latest"]
             command:
             - cat
             tty: true
@@ -22,8 +25,7 @@ pipeline {
     stage('Build') {
         steps {
             container('docker') {
-                sh "docker build -t goweb ."
-                sh "docker push gcr.io/core-1-190918/goweb:latest"
+                echo "building"
             }
         }
     }
