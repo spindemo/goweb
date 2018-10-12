@@ -24,7 +24,7 @@ pipeline {
             container('docker') {
                 sh "docker build -t goweb ."
                 sh "docker tag goweb gcr.io/core-1-190918/goweb:latest"
-                withCredentials([file(credentialsId: '73e59585-0489-4b48-850e-b2209cb7e803', variable: 'keyfile')]) {
+                withCredentials([file(credentialsId: 'gcr-agent', variable: 'keyfile')]) {
                   sh "cat ${keyfile} | docker login -u _json_key --password-stdin https://gcr.io"
                   sh "docker push gcr.io/core-1-190918/goweb:latest"
                 }
