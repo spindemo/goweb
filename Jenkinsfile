@@ -22,7 +22,7 @@ pipeline {
     stage('Build') {
         steps {
             container('docker') {
-                sh "docker build -t goweb ."
+                sh "docker build -t gcr.io/core-1-190918/goweb ."
                 sh "docker push gcr.io/core-1-190918/goweb:latest"
             }
         }
